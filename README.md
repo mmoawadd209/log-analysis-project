@@ -30,8 +30,7 @@ On which days did more than 1% of requests lead to errors?
 * [VirtualBox](https://www.virtualbox.org) - An open source virtualiztion product
 
 
-* [Udacity_Preconfigured_VM](https://s3.amazonaws.com/video.udacity-data.com/topher/2018/April/5acfbfa3_fsnd-    virtual-machine/fsnd-virtual-machine.zip) Alternately, you can use Github to fork and clone 
-  [this](https://github.com/udacity/fullstack-nanodegree-vm) repository.
+* [Udacity_Preconfigured_VM](https://s3.amazonaws.com/video.udacity-data.com/topher/2018/April/5acfbfa3_fsnd-virtual-machine/fsnd-virtual-machine.zip) Alternately, you can use Github to fork and clone [this](https://github.com/udacity/fullstack-nanodegree-vm) repository.
 
 
 * Udacity [“news”](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)   Database File.
