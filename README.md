@@ -37,7 +37,41 @@ The Python script uses the psycopg2 library to query and produce a report that a
 * cd to /vagrant shared folder.
 * Load the database using 'psql -d news -f newsdata.sql'
 * connect to the database using 'psql -d news'. 
-
+* create the following views:
+    
+    * popular_articles
+    
+      create or replace view popular_articles as
+      select articles.title, count(*) as count
+            from log, articles
+            where log.path = concat('/article/',articles.slug)
+            and log.status='200 OK'
+            group by articles.title
+            order by count desc
+      
+    * popular_authors
+    
+      create or replace view popular_authors as
+      select authors.name, count(*) as count
+            from articles, authors, log
+            where authors.id = articles.author
+            and log.path = concat('/article/',articles.slug)
+            and log.status='200 OK'
+            group by authors.name
+            order by count desc
+    
+    * request_errors
+    
+      create or replace view request_errors as
+      select errors_count.date, errors_count.errors, time_count.total
+            from (select time::date as date, count() as errors 
+            from log where status!='200 OK' 
+            group by date) as errors_count
+            join (select time::date as date, count() as total
+            from log
+            group by date) as time_count
+            on errors_count.date=time_count.date
+            order by errors_count.date asc);
 
 ## Running the tool
 
