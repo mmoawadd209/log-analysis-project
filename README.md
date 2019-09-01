@@ -1,7 +1,6 @@
 ﻿# LOGS ANALYSIS PROJECT - Udacity FSDN
 
 
-
 The project requires creating a reporting tool that fetchs results from a large database of a "NEWS" website and prints out
 reports(in plain text) based on the data in the given database.
 
@@ -40,7 +39,7 @@ The Python script uses the psycopg2 library to query and produce a report that a
 * create the following views:
     
     * popular_articles
-    
+    ```sql
       create or replace view popular_articles as
       select articles.title, count(*) as count
             from log, articles
@@ -48,9 +47,10 @@ The Python script uses the psycopg2 library to query and produce a report that a
             and log.status='200 OK'
             group by articles.title
             order by count desc
+     ```
       
     * popular_authors
-    
+    ```sql
       create or replace view popular_authors as
       select authors.name, count(*) as count
             from articles, authors, log
@@ -59,9 +59,9 @@ The Python script uses the psycopg2 library to query and produce a report that a
             and log.status='200 OK'
             group by authors.name
             order by count desc
-    
+    ```
     * request_errors
-    
+    ```sql
       create or replace view request_errors as
       select errors_count.date, errors_count.errors, time_count.total
             from (select time::date as date, count() as errors 
@@ -72,7 +72,7 @@ The Python script uses the psycopg2 library to query and produce a report that a
             group by date) as time_count
             on errors_count.date=time_count.date
             order by errors_count.date asc);
-
+    ```
 ## Running the tool
 
 * Open a terminal windows and navigate to your VM folder Vagrant.
