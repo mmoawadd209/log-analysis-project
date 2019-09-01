@@ -32,10 +32,10 @@ The Python script uses the psycopg2 library to query and produce a report that a
 * Download data provided by Udacity 	
 * Unzip file to extract newsdata.sql This file should be inside the Vagrant folder.
 * Open a terminal windows and navigate to your VM folder Vagrant.
-* Use Commands 'vagrant up' to start the VM and'vagrant ssh' to connect to it. 
-* Change directory to /vagrant shared folder.
-* Load the database using 'psql -d news -f newsdata.sql'
-* Connect to the database using 'psql -d news'. 
+* Use Commands ```vagrant up``` to start the VM and ```vagrant ssh``` to connect to it. 
+* Change directory to ```/vagrant``` shared folder.
+* Load the database using ```psql -d news -f newsdata.sql```
+* Connect to the database using ```psql -d news```. 
 * Create the following views:
     
     * popular_articles
@@ -55,30 +55,25 @@ The Python script uses the psycopg2 library to query and produce a report that a
     ```sql
       create or replace view popular_authors as
       select authors.name, count(*) as count
-            from articles, authors, log
-            where authors.id = articles.author
-            and log.path = concat('/article/',articles.slug)
-            and log.status='200 OK'
-            group by authors.name
-            order by count desc
+             from articles, authors, log
+             where authors.id = articles.author
+             and log.path = concat('/article/',articles.slug)
+             and log.status='200 OK'
+             group by authors.name
+             order by count desc
     ```
     * request_errors
     
     ```sql
-      create or replace view request_errors as
-      select errors_count.date, errors_count.errors, time_count.total
-            from (select time::date as date, count() as errors 
-            from log where status!='200 OK' 
-            group by date) as errors_count
-            join (select time::date as date, count() as total
-            from log
-            group by date) as time_count
-            on errors_count.date=time_count.date
-            order by errors_count.date asc);
+      create view request_errors as
+      select date(time),round(100.0*sum(case log.status when '200 OK' 
+             then 0 else 1 end)/count(log.status),2) as request_errors
+             from log group by date(time) 
+             order by request_errors desc;
     ```
 ## Running the tool
 
 * Open a terminal windows and navigate to your VM folder Vagrant.
-* Use Commands 'vagrant up' to start the VM and 'vagrant ssh' to connect to it.
-* Change Directory to /vagrant folder.
-* Execute the Python file using 'python report-results.py'.	
+* Use Commands ```vagrant up``` to start the VM and ```vagrant ssh``` to connect to it.
+* Change Directory to ```/vagrant``` folder.
+* Execute the Python file using ```python report-results.py```.	
