@@ -67,9 +67,9 @@ The Python script uses the psycopg2 library to query and produce a report that a
     ```sql
       create view request_errors as
       select date(time),round(100.0*sum(case log.status when '200 OK' 
-             then 0 else 1 end)/count(log.status),2) as request_errors
+             then 0 else 1 end)/count(log.status),2) as count
              from log group by date(time) 
-             order by request_errors desc;
+             order by count desc;
     ```
 ## Running the tool
 
