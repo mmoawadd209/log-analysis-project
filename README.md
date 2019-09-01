@@ -20,7 +20,7 @@ The Python script uses the psycopg2 library to query and produce a report that a
 * [Python3](https://www.python.org) - The code uses ver 3.6.4
 * [Vagrant](https://www.vagrantup.com) - A virtual environment builder and manager
 * [VirtualBox](https://www.virtualbox.org) - An open source virtualiztion product
-* [Udacity_Preconfigured_VM](https://s3.amazonaws.com/video.udacity-data.com/topher/2018/April/5acfbfa3_fsnd-virtual-           machine/fsnd-virtual-machine.zip) Alternately, you can use Github to fork and clone [this]           (https://github.com/udacity/fullstack-nanodegree-vm) repository.
+* [Udacity_Preconfigured_VM](https://s3.amazonaws.com/video.udacity-data.com/topher/2018/April/5acfbfa3_fsnd-virtual-        machine/fsnd-virtual-machine.zip) Alternately, you can use Github to fork and clone [this]         (https://github.com/udacity/fullstack-nanodegree-vm) repository.
 * Udacity [“news”](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)   Database File.
 
 
