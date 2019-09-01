@@ -30,7 +30,7 @@ The Python script uses the psycopg2 library to query and produce a report that a
 * Download and install Vagrant and VirtualBox.
 * Download this Udacity folder with preconfigured vagrant settings.
 * Download data provided by Udacity 	
-* Unzip file to extract newsdata.sql This file should be inside the Vagrant folder.
+* Unzip file to extract newsdata.sql, this file should be inside the Vagrant folder.
 * Open a terminal windows and navigate to your VM folder Vagrant.
 * Use Commands ```vagrant up``` to start the VM and ```vagrant ssh``` to connect to it. 
 * Change directory to ```/vagrant``` shared folder.
