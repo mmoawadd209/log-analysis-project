@@ -47,7 +47,7 @@ The Python script uses the psycopg2 library to query and produce a report that a
             where log.path = concat('/article/',articles.slug)
             and log.status='200 OK'
             group by articles.title
-            order by count desc
+            order by count desc;
      ```
       
     * popular_authors
@@ -60,7 +60,7 @@ The Python script uses the psycopg2 library to query and produce a report that a
              and log.path = concat('/article/',articles.slug)
              and log.status='200 OK'
              group by authors.name
-             order by count desc
+             order by count desc;
     ```
     * request_errors
     
