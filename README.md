@@ -54,7 +54,7 @@ The Python script uses the psycopg2 library to query and produce a report that a
     
     ```sql
       create or replace view popular_authors as
-      select authors.name, count(*) as count
+      select authors.name as title, count(*) as count
              from articles, authors, log
              where authors.id = articles.author
              and log.path = concat('/article/',articles.slug)
